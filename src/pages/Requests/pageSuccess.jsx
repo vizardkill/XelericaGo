@@ -9,7 +9,8 @@ import { makeStyles } from "@material-ui/styles";
 
 const pageSuccessStyles = makeStyles((theme) => ({
     animation: {
-        width: "500px",
+        width: "400px",
+        maxHeight: "350px",
         margin: "auto",
         [theme.breakpoints.down("sm")]: {
             width: "auto",

@@ -318,14 +318,10 @@ const Login = () => {
                                                     if (
                                                         !validator.isLength(value, {
                                                             min: 0,
-                                                            max: 40,
+                                                            max: 80,
                                                         })
                                                     ) {
                                                         return "El campo de usuario sobrepasa el limite de longitud permitida.";
-                                                    }
-
-                                                    if (validator.isEmail(value)) {
-                                                        return "Por favor utiliza solo tu usuario corporativo excluyendo el dominio @choucairtesting.com.";
                                                     }
                                                 },
                                             }}

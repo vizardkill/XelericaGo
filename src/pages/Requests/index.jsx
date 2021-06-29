@@ -20,8 +20,8 @@ const requestHomeStyles = makeStyles((theme) => ({
     rootIconButton: {
         backgroundColor: "#031E3A",
         border: "20px solid #9a0036",
-        width: "300px",
-        height: "300px",
+        width: "250px",
+        height: "250px",
         [theme.breakpoints.down("sm")]: {
             width: "180px",
             height: "180px",
@@ -81,6 +81,7 @@ const RequestHome = () => {
                 <Box
                     sx={{
                         marginBottom: "50px",
+                        marginTop: "35px"
                     }}
                 >
                     <Typography variant="h5">{`¡Bienvenido ${strInfoUser?.glpifirstname}!`}</Typography>
