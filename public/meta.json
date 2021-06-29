@@ -1,6 +1,6 @@
 {
-    "name": "Catalogo de Servicios",
-    "description": "Es un aplicativo que se encarga de centralizar, monitorear y administrar los diferentes servicios de las aplicaciones desarrolladas por TI.",
+    "name": "Xelerica Go",
+    "description": "Aplicativo para la gestión de solicitudes.",
     "license": null,
     "openSourceProject": 0,
     "governmentWideReuseProject": 0,
@@ -8,5 +8,5 @@
     "contact": {
         "email": "scardonas@choucairtesting.com"
     },
-    "version": "0.2.0"
+    "version": "0.1.0"
 }
