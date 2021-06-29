@@ -291,7 +291,7 @@ const Login = () => {
                                                     label="Usuario"
                                                     helperText={
                                                         errors?.strUser?.message ||
-                                                        "Digita tu usuario de Xelerica Go, Ejemplo: soporteti"
+                                                        "Digita tu usuario de Xelerica Go"
                                                     }
                                                     error={errors?.strUser ? true : false}
                                                     fullWidth
