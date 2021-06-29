@@ -102,7 +102,7 @@ const ModalDeleteServicio = ({ handleClose, open }) => {
                         input: {
                             users_id: strInfoUser?.glpiID,
                             type: 1,
-                            itilcategories_id: 9,
+                            itilcategories_id: 39,
                             requesttypes_id: 6,
                             urgency: 5,
                             impact: 5,

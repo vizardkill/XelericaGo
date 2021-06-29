@@ -313,7 +313,7 @@ const Login = () => {
                                             control={control}
                                             rules={{
                                                 required:
-                                                    "Por favor digita tu usuario corporativo, Ejemplo: soporteti",
+                                                    "Por favor digita tu usuario de xelerica Go",
                                                 validate: (value) => {
                                                     if (
                                                         !validator.isLength(value, {
