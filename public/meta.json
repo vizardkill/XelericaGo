@@ -1,0 +1,12 @@
+{
+    "name": "Catalogo de Servicios",
+    "description": "Es un aplicativo que se encarga de centralizar, monitorear y administrar los diferentes servicios de las aplicaciones desarrolladas por TI.",
+    "license": null,
+    "openSourceProject": 0,
+    "governmentWideReuseProject": 0,
+    "tags": ["TI"],
+    "contact": {
+        "email": "scardonas@choucairtesting.com"
+    },
+    "version": "0.2.0"
+}
