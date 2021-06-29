@@ -418,7 +418,7 @@ const Login = () => {
                                         </Button>
                                     </Grid>
 
-                                    <Grid item xs={12}>
+                                    {/* <Grid item xs={12}>
                                         <Typography
                                             variant="caption"
                                             component="div"
@@ -435,7 +435,7 @@ const Login = () => {
                                                 ¿Olvidaste tu contraseña?
                                             </a>
                                         </Typography>
-                                    </Grid>
+                                    </Grid> */}
                                 </Grid>
 
                                 <Box className={classes.copyright}>
