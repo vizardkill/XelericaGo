@@ -81,7 +81,7 @@ const RequestHome = () => {
                 <Box
                     sx={{
                         marginBottom: "50px",
-                        marginTop: "35px"
+                        marginTop: "50px"
                     }}
                 >
                     <Typography variant="h5">{`¡Bienvenido ${strInfoUser?.glpifirstname}!`}</Typography>
