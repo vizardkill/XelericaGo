@@ -116,19 +116,56 @@ const ModalDeleteServicio = ({ handleClose, open }) => {
                     cancelToken: signalSubmitData.token,
                 }
             )
-                .then((res) => {
+                .then(async (res) => {
                     if (!res.data.id) {
                         throw new Error(
                             "El servicio no esta disponible, por favor intentalo de nuevo mas tarde"
                         );
                     }
 
-                    toast.success(res.data.message);
+                    await axios({
+                        method: "POST",
+                        baseURL: "https://api-sms.masivapp.com",
+                        URL: "/smsv3/sms/messages",
+                        auth: {
+                            username: "XELERICASAS_Y97KC",
+                            password: ",DvgS0o9yU",
+                        },
+                        data: {
+                            To: `${data.strTelefono}`,
+                            Text: "Gracias por utilizar Xelerica Go, tu solicitud ha sido recibida y uno de nuestros expertos se encargara de atenderte, recuerda estar atento a tu dispositivo movil.",
+                        },
+                    })
+                        .then(() => {
+                            toast.success(res.data.message);
 
-                    setSuccess((prevState) => ({
-                        submitData: true,
-                        loading: false,
-                    }));
+                            setSuccess(() => ({
+                                submitData: true,
+                                loading: false,
+                            }));
+                        })
+                        .catch((error) => {
+                            if (!axios.isCancel(error)) {
+                                let msg;
+
+                                if (error.response) {
+                                    msg = error.response.data[1];
+                                } else if (error.request) {
+                                    msg = error.message;
+                                } else {
+                                    msg = error.message;
+                                }
+
+                                toast.success(res.data.message);
+
+                                setSuccess(() => ({
+                                    submitData: true,
+                                    loading: false,
+                                }));
+
+                                console.error(msg);
+                            }
+                        });
                 })
                 .catch((error) => {
                     if (!axios.isCancel(error)) {
@@ -172,7 +209,7 @@ const ModalDeleteServicio = ({ handleClose, open }) => {
 
     useEffect(() => {
         if (success.submitData) {
-            push("/home/success")
+            push("/home/success");
         }
     }, [success.submitData, push]);
 
