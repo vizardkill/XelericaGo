@@ -124,16 +124,20 @@ const ModalDeleteServicio = ({ handleClose, open }) => {
                     }
 
                     await axios({
-                        method: "POST",
+                        method: "GET",
                         baseURL: "https://api-sms.masivapp.com",
-                        URL: "/smsv3/sms/messages",
-                        auth: {
-                            username: "XELERICASAS_Y97KC",
-                            password: ",DvgS0o9yU",
-                        },
-                        data: {
-                            To: `${data.strTelefono}`,
-                            Text: "Gracias por utilizar Xelerica Go, tu solicitud ha sido recibida y uno de nuestros expertos se encargara de atenderte, recuerda estar atento a tu dispositivo movil.",
+                        URL: "/SmsHandlers/sendhandler.ashx",
+                        params: {
+                            action: "sendmessage",
+                            username: "demoeapi",
+                            password: "xL.f$.wX&",
+                            recipient: `57${data.strTelefono}`,
+                            messagedata:
+                                "Hello world.",
+                            longMessage: false,
+                            url: "https://app.xelerica.com/",
+                            flash: false,
+                            premium: false,
                         },
                     })
                         .then(() => {

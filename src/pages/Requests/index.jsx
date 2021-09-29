@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useContext } from "react";
 
 //Librerias
-import {} from "react-timer-hook"
+import {} from "react-timer-hook";
 
 //Context
 import { AuthContext } from "../../common/Middlewares/Auth";
 
 //Componentes Material UI
-import { IconButton, Box, Typography } from "@material-ui/core";
+import { IconButton, Box, Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 //Iconos
@@ -81,7 +81,7 @@ const RequestHome = () => {
                 <Box
                     sx={{
                         marginBottom: "50px",
-                        marginTop: "50px"
+                        marginTop: "50px",
                     }}
                 >
                     <Typography variant="h5">{`¡Bienvenido ${strInfoUser?.glpifirstname}!`}</Typography>
@@ -98,12 +98,28 @@ const RequestHome = () => {
                 <Box
                     sx={{
                         marginTop: "80px",
+                        maxWidth: "580px",
                     }}
                 >
                     <Typography variant="h6" align="center">
                         Oprime el botón si necesitas ayuda, nos contactaremos contigo lo
-                        antes posible.
+                        antes posible, si deseas visualizar tus solicitudes, puedes
+                        oprimir el boton de abajo.
                     </Typography>
+                </Box>
+
+                <Box
+                    sx={{
+                        marginTop: "50px",
+                    }}
+                >
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        href="https://www.xelerica.com/basic/front/ticket.php?is_deleted=0&as_map=0&criteria%5B0%5D%5Blink%5D=AND&criteria%5B0%5D%5Bfield%5D=12&criteria%5B0%5D%5Bsearchtype%5D=equals&criteria%5B0%5D%5Bvalue%5D=all&search=Buscar&itemtype=Ticket&start=0&_glpi_csrf_token=f91021d7228a8afc0e19a08e1d4e510406022a460d5d8282dae59d609d1d2f70"
+                    >
+                        consulta de servicios abiertos
+                    </Button>
                 </Box>
             </Box>
         </Fragment>
