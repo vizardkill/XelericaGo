@@ -97,7 +97,7 @@ const RequestHome = () => {
 
                 <Box
                     sx={{
-                        marginTop: "80px",
+                        marginTop: "10px",
                         maxWidth: "580px",
                     }}
                 >
