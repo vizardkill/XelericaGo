@@ -123,53 +123,70 @@ const ModalDeleteServicio = ({ handleClose, open }) => {
                         );
                     }
 
-                    await axios({
-                        method: "GET",
-                        baseURL: "https://api-sms.masivapp.com",
-                        URL: "/SmsHandlers/sendhandler.ashx",
-                        params: {
-                            action: "sendmessage",
-                            username: "demoeapi",
-                            password: "xL.f$.wX&",
-                            recipient: `57${data.strTelefono}`,
-                            messagedata:
-                                "Hello world.",
-                            longMessage: false,
-                            url: "https://app.xelerica.com/",
-                            flash: false,
-                            premium: false,
-                        },
-                    })
-                        .then(() => {
-                            toast.success(res.data.message);
+                    var xhr = new XMLHttpRequest();
+                    xhr.withCredentials = true;
 
-                            setSuccess(() => ({
-                                submitData: true,
-                                loading: false,
-                            }));
-                        })
-                        .catch((error) => {
-                            if (!axios.isCancel(error)) {
-                                let msg;
+                    xhr.addEventListener("readystatechange", function () {
+                        if (this.readyState === 4) {
+                            console.log(this.responseText);
+                        }
+                    });
 
-                                if (error.response) {
-                                    msg = error.response.data[1];
-                                } else if (error.request) {
-                                    msg = error.message;
-                                } else {
-                                    msg = error.message;
-                                }
+                    xhr.open(
+                        "GET",
+                        "https://api-sms.masivapp.com/SmsHandlers/sendhandler.ashx?action=sendmessage&username=XELERICASAS_Y97KC&password=,DvgS0o9yU&recipient=573058523482&messagedata=Hello%20World,%20please%20visit%20our%20site%20SHORTURL&longMessage=false&url=http%253A%252F%252Fwww.google.com&flash=false&premium=false"
+                    );
 
-                                toast.success(res.data.message);
+                    xhr.send();
 
-                                setSuccess(() => ({
-                                    submitData: true,
-                                    loading: false,
-                                }));
+                    // await axios({
+                    //     method: "POST",
+                    //     baseURL: "https://api-sms.masivapp.com",
+                    //     URL: "/smsv3/sms/messages",
+                    //     auth: {
+                    //         username: "XELERICASAS_Y97KC",
+                    //         password: ",DvgS0o9yU",
+                    //     },
+                    //     data: {
+                    //         To: "573058523482",
+                    //         Text: "Test SMS SHORTURL",
+                    //         CustomData: "CUST_ID_0125",
+                    //         IsPremium: "False",
+                    //         IsFlash: "False",
+                    //         LongMessage: "True",
+                    //         URL: "https://www.masiv.com",
+                    //     },
+                    // })
+                    //     .then(() => {
+                    //         toast.success(res.data.message);
 
-                                console.error(msg);
-                            }
-                        });
+                    //         setSuccess(() => ({
+                    //             submitData: true,
+                    //             loading: false,
+                    //         }));
+                    //     })
+                    //     .catch((error) => {
+                    //         if (!axios.isCancel(error)) {
+                    //             let msg;
+
+                    //             if (error.response) {
+                    //                 msg = error.response.data[1];
+                    //             } else if (error.request) {
+                    //                 msg = error.message;
+                    //             } else {
+                    //                 msg = error.message;
+                    //             }
+
+                    //             toast.success(res.data.message);
+
+                    //             setSuccess(() => ({
+                    //                 submitData: true,
+                    //                 loading: false,
+                    //             }));
+
+                    //             console.error(msg);
+                    //         }
+                    //     });
                 })
                 .catch((error) => {
                     if (!axios.isCancel(error)) {
