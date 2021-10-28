@@ -56,9 +56,10 @@ const Main = ({ children }) => {
     //===============================================================================================================================================
     return (
         <Fragment>
-            <AppBar classes={{ colorPrimary: classes.appBarColor }}>
-                <Toolbar>
+            <AppBar classes={{ colorPrimary: classes.appBarColor }} >
+                <Toolbar  >
                     <Box
+                    
                         sx={{
                             display: "flex",
                             flexGrow: 1,
