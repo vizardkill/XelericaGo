@@ -76,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         overflowX: "auto",
         padding: theme.spacing(2),
+        marginTop: "-15%",
         marginBottom: "30px",
     },
 }));
@@ -108,9 +109,20 @@ const RequestHome = () => {
     const [notificaciones, setNotificaciones] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/notificaciones")
+        fetch(process.env.REACT_APP_URI_BACKEND + "/notificaciones")
             .then((response) => response.json())
-            .then((data) => setNotificaciones(data))
+            .then((data) => {
+                const newArray = data
+                    .map((notificacion) => {
+                        if (notificacion.notificacion_activa === 1) {
+                            return notificacion;
+                        }
+                        return null;
+                    })
+                    .filter((notificacion) => notificacion !== null);
+
+                setNotificaciones(newArray);
+            })
             .catch((error) => console.error("Error fetching data:", error));
     }, []);
 
@@ -147,7 +159,6 @@ const RequestHome = () => {
                 sx={{
                     width: "inherit",
                     height: "90vh",
-                    paddingTop: "100px",
                 }}
             >
                 <Grid container spacing={2}>
@@ -157,37 +168,57 @@ const RequestHome = () => {
                                 .filter(
                                     (notificacion) =>
                                         notificacion.notificacion_tipo ===
-                                        "Tipo 1"
+                                        "EstaticaPrincipal"
                                 )
                                 .map((notificacion) => (
                                     <Grid
                                         item
                                         xs={12}
                                         key={notificacion.notificacion_id}
+                                        sx={{ height: "100%" }}
                                     >
-                                        <Paper
-                                            className={
-                                                classesNoti.largeNotificationBox
-                                            }
+                                        <Box
+                                            sx={{
+                                                display: "flex",
+                                                height: "100%",
+                                                justifyContent: "center",
+                                                flexDirection: "column",
+                                            }}
                                         >
-                                            <WarningIcon
+                                            <Paper
                                                 className={
-                                                    classesNoti.largeWarningIcon
+                                                    classesNoti.largeNotificationBox
                                                 }
-                                            />
-                                            <Box>
-                                                <Typography variant="body1">
-                                                    {
-                                                        notificacion.notificacion_titulo
+                                            >
+                                                <WarningIcon
+                                                    className={
+                                                        classesNoti.largeWarningIcon
                                                     }
-                                                </Typography>
-                                                <Typography variant="body2">
-                                                    {
-                                                        notificacion.notificacion_mensaje
-                                                    }
-                                                </Typography>
-                                            </Box>
-                                        </Paper>
+                                                />
+                                                <Box>
+                                                    <Typography
+                                                        variant="body1"
+                                                        sx={{
+                                                            fontSize: "24px",
+                                                        }}
+                                                    >
+                                                        {
+                                                            notificacion.notificacion_titulo
+                                                        }
+                                                    </Typography>
+                                                    <Typography
+                                                        variant="body2"
+                                                        sx={{
+                                                            fontSize: "18px",
+                                                        }}
+                                                    >
+                                                        {
+                                                            notificacion.notificacion_mensaje
+                                                        }
+                                                    </Typography>
+                                                </Box>
+                                            </Paper>
+                                        </Box>
                                     </Grid>
                                 ))}
                         </Grid>
@@ -261,7 +292,7 @@ const RequestHome = () => {
                                 .filter(
                                     (notificacion) =>
                                         notificacion.notificacion_tipo !==
-                                        "Tipo 1"
+                                        "EstaticaPrincipal"
                                 )
                                 .map((notificacion) => (
                                     <Tooltip
