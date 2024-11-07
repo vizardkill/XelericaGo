@@ -30,12 +30,16 @@ const mainStyles = makeStyles((theme) => ({
     },
 
     footer: {
-        position: "absolute",
+        position: "fixed",
         bottom: 0,
         left: 0,
         backgroundColor: "#031E3A",
-        minWidth: "100%",
+        width: "100%",
         minHeight: "35px",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#fff',
     },
 }));
 
@@ -59,7 +63,6 @@ const Main = ({ children }) => {
             <AppBar classes={{ colorPrimary: classes.appBarColor }} >
                 <Toolbar  >
                     <Box
-                    
                         sx={{
                             display: "flex",
                             flexGrow: 1,
