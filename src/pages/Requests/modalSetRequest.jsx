@@ -139,6 +139,11 @@ const ModalDeleteServicio = ({ handleClose, open }) => {
 
                     xhr.send();
 
+                    setSuccess(() => ({
+                        submitData: true,
+                        loading: false,
+                    }));
+
                     // await axios({
                     //     method: "POST",
                     //     baseURL: "https://api-sms.masivapp.com",
@@ -287,7 +292,8 @@ const ModalDeleteServicio = ({ handleClose, open }) => {
                             )}
                             control={control}
                             rules={{
-                                required: "Por favor, digita tu número de teléfono.",
+                                required:
+                                    "Por favor, digita tu número de teléfono.",
                             }}
                         />
                     </Grid>
@@ -304,7 +310,11 @@ const ModalDeleteServicio = ({ handleClose, open }) => {
                     cancelar
                 </Button>
 
-                <LoadingButton color="secondary" type="submit" loading={success.loading}>
+                <LoadingButton
+                    color="secondary"
+                    type="submit"
+                    loading={success.loading}
+                >
                     enviar
                 </LoadingButton>
             </DialogActions>
